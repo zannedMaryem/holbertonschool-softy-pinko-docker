@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  back-end:
+    build: ./back-end
+    container_name: softy-pinko-back-end-task2
+    ports:
+      - "5252:5252"
+
+  front-end:
+    build: ./front-end
+    container_name: softy-pinko-front-end-task2
+    ports:
+      - "9000:9000"
+
+  proxy:
+    image: nginx:latest
+    container_name: softy-pinko-proxy-task2
+    ports:
+      - "80:80"
+    volumes:
+      - ./proxy.conf:/etc/nginx/conf.d/default.conf
